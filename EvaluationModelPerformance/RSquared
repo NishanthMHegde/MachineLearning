@@ -1,0 +1,44 @@
+
+Consider a simple linear regression model. We fit a straight line which tries to take into account
+as many variables as possible. The best model is the one where the sum of squares of distance between
+actual value of predictor value and plotted value of predicted value on the graph is the least (minimum).
+This is Ordinary Least squares method. 
+
+Let,
+
+Yi = actual value of the data point i for the predictor Y
+Yi^ (Yi cap)= model predicted value of the data point i for the predictor Y
+
+We are looking to minimize the value of SUM(Yi - Yi^)^2
+
+Here SS(residual) = SUM(Yi - Yi^)^2
+
+Now let us assume that we plot the average of the values of the predictor variable Y.
+We will get a straight horizontal line parallel to the X-axis and which will pass through
+very few points.
+For such conditions SUM(Yi - Yi^)^2 will be very high.
+For such a graph, SS(total) = SUM(Yi - Yi^)^2
+
+Here, R-squared value = 1 - (SS(residual)/SS(total))
+Our model is a perfect fit if R-squared value is 1.
+Hence, as SS(residual) decreases, our model becomes even more accurate and hence R-squared value 
+also improves.  This holds very true for SImple Linear Regression.
+
+**** Adjusted R-squared value ****
+
+Now, consider a multiple Linear Regression y = b0 + b1x1 + b2x2 
+
+Let us assume that we have calculated an R-squared error. Now if we plan to add another
+independent variable x3, then the coefficient b3 for the variable x3 can be assigned a 0
+because our model always looks to reduce the R-squared error. Hence, if our model finds
+that addition of another independent variable decreases the r-squared error, then it will
+conveniently make the coefficient of the new indepenent variable 0.
+
+To get around this problem, Adjusted R-squared value was invented.
+
+Adjusted R-squared = 1 - (1 -Rsquared)*(n-1/(n-p-1))
+
+Where n = number of samples
+p = number of independent variables.
+
+The above formulae takes into account the addition of new independent variables. 
