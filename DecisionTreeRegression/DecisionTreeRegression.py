@@ -32,8 +32,8 @@ plt.title("Salary vs Level of Employment")
 plt.xlabel("Salary")
 plt.ylabel("Level of Employment")
 plt.show()
-#We see that the above graph is not continous because it was not plotted using intervals.
-print("We see that the above graph is not continous because it was not plotted using intervals.")
+#We see that the above graph is continous because it was not plotted using intervals.
+print("We see that the above graph is continous because it was not plotted using intervals.")
 
 print("Let us now plot a high resolution smoother graph")
 #Let us now plot a high resolution smoother graph
@@ -46,5 +46,5 @@ plt.xlabel("Salary")
 plt.ylabel("Level of Employment")
 plt.show()
 
-#In the above graph, it is a mixture o both horizontal and vertical lines since the data is continous.
-print("In the above graph, it is a mixture o both horizontal and vertical lines since the data is continous.")
+#In the above graph, it is a mixture of both horizontal and vertical lines since the data is non-continous.
+print("In the above graph, it is a mixture of both horizontal and vertical lines since the data is non-continous.")
