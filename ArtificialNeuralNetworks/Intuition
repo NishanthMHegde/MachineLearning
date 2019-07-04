@@ -1,0 +1,26 @@
+ANN was started with an idea to mimic the animal or human brain on how decisions are taken based on a sequence of events
+or inputs that the brain receives. In order to understand this better, we can visualize the human brain which has 
+millions of neurons.
+
+Structure of Neurons:
+
+1. Nucleus: This is the core of the neuron and is located at the center of the neuron body. The main decision making takes place in
+ths neuron.
+2. Dendrites: The hair which are present on the Neuron body like branches are called dendrites. These dendrites receive 
+electric impulses from the Axon of another neuron. This is considered as an input.
+3. Axon: The Axon is the tail of the neuron which connects the neuron body to another neuron. This is done by passing a 
+signal from the Axon to the dendrites of another neuron. It is like passing an output to another neighbouring neuron. 
+4. Synapse: The weights of the inputs passed on by the Axon of one Neuron to the Dendrites of another Neuron.
+
+A Basic Neural Network:
+
+PERCEPTRON MODEL:
+
+A perceptron consists of one layer of input which has one neuron, one hidden layer containing one neuron and one output layer
+containing one neuron. The neuron in the hidden layer receives an input from the neuron in the input layer,
+applies an activation function and then sends the output with some weight to the neuron in the output layer.
+
+The value obtained by the neuron in the hidden layer is sum of product of weight and input values of all neurons.
+On this value an activation function is applied. If the dependent variable is binary, then a Sigmoid function or 
+a Theshold function is applied. The output from the neuron is then multipled with the weight going from the neuron
+to the neuron in output layer or other forward layers and simmilar calculations happen in the next neuron.

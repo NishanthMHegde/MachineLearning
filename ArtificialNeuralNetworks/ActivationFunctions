@@ -1,0 +1,23 @@
+When the sum of products of weight and input values arrive at the neuron, we need to activate the neuron. For this purpose,
+we need to have an activation function. Only a neuron which is activated can send in an input to another neuron. LEt us denote the 
+input as sigma(WiXi)
+
+1. Threshold Function: It is a simple function used in classification examples. Not very efficient even though it is
+fast.It looks like a step. It is denoted by {
+	f(x) = 0 , if x<0
+	f(x) = 1, if x>=0
+}
+
+2. Sigmoid function: It is a small varation of the Threshold function and the curve looks smoother. It is an S shaped curve.
+It is denoted by {
+	f(x) = 1/(1 + e^(-x))
+}
+
+3. ReLu function: It is a commonly used activation function for which is very efficient. It looks like a steep hill.
+It is denoted by {
+	f(x) = max(x, 0)
+}
+
+4. tanh function (Hyperbolic tangent): Another variation of Sigmoidal function. It is denoted by {
+	f(x) = (1-e^(-2x))/(1+e^(-2x))
+}

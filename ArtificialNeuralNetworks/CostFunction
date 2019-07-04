@@ -1,0 +1,17 @@
+Cost Function: The cost function is used to keep track of the error rate of our Neural Network. 
+
+Steps:
+
+1. Select the first observation or row of our data. Input the observation with each column/feature 
+being fed to one seperate input node in input layer.
+2. Feed forward the input along with its product with the weight from each of the input neuron
+to the neuron in the hidden layer.
+3. Apply an Activation function at the hidden layer neurons and feed forward the result with their
+products of the weights to the output layer neuron. 
+3. Calculate the Predicted value Yi or ( pronounces as Y hat). 
+4. Let Yi be the predicted value and Y be the actual value for the observation.
+5. Calculate the cost function by using the formula C = 1/2 * (Yi - Y)^2. 
+6. Repeat the steps 1 to 5 and store the value of each record. 
+7. Find the sum of cost functions of all the rows or observations in the data. We find sigma(C).
+8. Minimize the cost function value by adjusting the weights at each neuron. For this use
+GRADIENT DESCENT.
