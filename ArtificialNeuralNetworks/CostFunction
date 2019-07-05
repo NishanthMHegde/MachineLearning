@@ -15,3 +15,5 @@ products of the weights to the output layer neuron.
 7. Find the sum of cost functions of all the rows or observations in the data. We find sigma(C).
 8. Minimize the cost function value by adjusting the weights at each neuron. For this use
 GRADIENT DESCENT.
+9. Once we are done iterating over the entire dataset, we repeat steps 1 to 8 for as many
+epochs as we want. One epoch is one round of traversing the dataset.

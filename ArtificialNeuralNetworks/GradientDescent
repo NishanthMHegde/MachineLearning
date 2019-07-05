@@ -1,0 +1,21 @@
+Gradient Descent: Use to minimize the cost function so that during backpropogation the weights can be minimized
+effectively. 
+If we plot a graph of C = 1/2* (Yi -Y)^2, we can see that we get a U-shaped curve. 
+We need to find the minimum point on this curve. For this consider a point
+on the curve. Calculate the slope of the curve at that point. If the slope
+is negative, then move the point towards down-right. Now measure the slope
+of the curve at the new point. IF the slope is positive, move the point
+downwards to the left. Do this until we get to a point where slope is 0.
+This is the minima of the curve. This is called Gradient Descent.
+For Gradient descent, we use all the rows or observations and then apply cost function,
+gradient descent adn then back-propogation.
+
+But what would we do if the curve had more than one minima (a curve with more than one
+low point)? In such cases we need to use Stochastic Gradient Descent.
+
+In Stochastic Gradient descent, we observe that there are several minimas.
+These minimas are called local minimas. Our challenge is to find the 
+global minima which is the lowest point. In order to get around this,
+we need to calculate the Cost function for individual rows/observations,
+minimize the cost function and then apply back-propogation on only
+that row/observation.
