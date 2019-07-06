@@ -66,7 +66,7 @@ classifier.compile(optimizer = "adam", loss = "binary_crossentropy", metrics = [
 
 #We fit our classifier on our training data
 classifier.fit(X_train, y_train, batch_size=10, nb_epoch=100)
-y_pred = classifier.predict(y_train)
+y_pred = classifier.predict(X_test)
 print(y_pred)
 #We got the probability of exiting the bank but we need a classification of yes/no
 print("We got the probability of exiting the bank but we need a classification of yes/no")
@@ -76,3 +76,6 @@ y_pred = (y_pred >0.5)
 #We construct a cnfusion metrics
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
+
+#We can see that we have an accuracy of around 86.3% which is decent
+print("We can see that we have an accuracy of around 86.3% which is decent")
