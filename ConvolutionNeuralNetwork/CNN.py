@@ -29,3 +29,70 @@ rows.
 the flattened image arrays. Here we apply Relu activation function. 
 
 """
+
+from keras.models import Sequential
+from keras.layers import Convolution2D
+from keras.layers import MaxPooling2D
+from keras.layers import Flatten
+from keras.layers import Dense
+from keras.preprocessing.image import ImageDataGenerator
+
+#We have already pre-processed our data by creating a folder which has a training
+#and testing sub-folder. Each of these folders has 2 more sub-folders which belong to 
+#cats and dogs which we will be classifying
+
+classifier = Sequential()
+#First step is convolution where we will add the number of feature detectors and its shape
+#input_shape is the (height pixels, width pixels, number of layers =3 (for RGB))
+classifier.add(Convolution2D(32, 3, 3, input_shape=(64, 64, 3), activation='relu'))
+
+#Max Pooling
+#pool_size is the size of the square which will stride through the Convoluted image
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
+#*******Add the below layer/lines of code to improve accuracy of the CNN classifier*****
+classifier.add(Convolution2D(32, 3, 3, activation='relu'))
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+#*******************************************************
+#Flattening
+classifier.add(Flatten())
+
+#We construct the Full Connection which has one dense layer and output layer consisting of one neuron
+classifier.add(Dense(output_dim = 128, activation='relu'))
+#We now add the output neuron layer of one neuron which predicts the probability of an image
+#belonging to cat or dog
+classifier.add(Dense(output_dim = 1, activation='sigmoid'))
+
+#Now we compile our Neural Network
+classifier.compile(optimizer='adam', loss = "binary_crossentropy", metrics=['accuracy'])
+
+#Here we carry out feature augmentation where we generate different styles or renditions
+#of the same training/test image so that we can simulate different types/quality or scenarios
+#of images
+
+train_datagen = ImageDataGenerator(rescale = 1./255,
+                                   shear_range = 0.2,
+                                   zoom_range = 0.2,
+                                   horizontal_flip = True)
+
+test_datagen = ImageDataGenerator(rescale = 1./255)
+
+training_set = train_datagen.flow_from_directory('dataset/training_set',
+                                                 target_size = (64, 64),
+                                                 batch_size = 32,
+                                                 class_mode = 'binary')
+
+test_set = test_datagen.flow_from_directory('dataset/test_set',
+                                            target_size = (64, 64),
+                                            batch_size = 32,
+                                            class_mode = 'binary')
+#We fit our CNN classifierwith the images in training set which are now augmented
+#We also carry out validation of our model against our test set to check accuracy
+
+classifier.fit_generator(training_set,
+                         samples_per_epoch = 8000,
+                         nb_epoch = 25,
+                         validation_data = test_set,
+                         nb_val_samples = 2000)
+print("Accuracy of our classifier can be improved by adding more Convolution and MaxPooling2D layers"
+      " or by adding one more layer of dense neuron")
