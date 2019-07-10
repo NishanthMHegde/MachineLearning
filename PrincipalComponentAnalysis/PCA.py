@@ -31,6 +31,10 @@ df = pd.read_csv("Wine.csv")
 X = df.iloc[:, 0:13].values
 y = df.iloc[:, 13].values 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+#We need to feature scale age and salary since the model does not automatically take care of it.
+scaler_X = StandardScaler()
+X_train = scaler_X.fit_transform(X_train)
+X_test = scaler_X.transform(X_test)
 #Apply PCA here
 pca = PCA(n_components=None)
 X_train = pca.fit_transform(X_train)
@@ -50,10 +54,6 @@ X_test = pca.transform(X_test)
 explained_variance = pca.explained_variance_ratio_
 explained_variance = ["%f"%(var) for var in explained_variance]
 print(explained_variance)
-#We need to feature scale age and salary since the model does not automatically take care of it.
-scaler_X = StandardScaler()
-X_train = scaler_X.fit_transform(X_train)
-X_test = scaler_X.transform(X_test)
 
 #Let us now build our model 
 classifier = LogisticRegression(random_state=0)
