@@ -26,15 +26,16 @@ df = pd.read_csv("Wine.csv")
 X = df.iloc[:, 0:13].values
 y = df.iloc[:, 13].values 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+scaler_X = StandardScaler()
+X_train = scaler_X.fit_transform(X_train)
+X_test = scaler_X.transform(X_test)
 #Apply LDA here
 #We select 2 components here because we want to project them to a 2D subspace
 lda = LDA(n_components=2)
 #We need to fit LDA model using independent as well as dependent variable data
 X_train = lda.fit_transform(X_train, y_train)
 X_test = lda.transform(X_test)
-scaler_X = StandardScaler()
-X_train = scaler_X.fit_transform(X_train)
-X_test = scaler_X.transform(X_test)
+
 
 #Let us now build our model 
 classifier = LogisticRegression(random_state=0)
