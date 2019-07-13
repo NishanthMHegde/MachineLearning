@@ -57,7 +57,7 @@ parameters = [{'C': [1, 10, 100, 1000], 'kernel': ['linear']},
 grid_search = GridSearchCV(estimator = classifier,
 							param_grid = parameters,
 							cv=2,
-							n_jobs =-1,
+							n_jobs =1,
 							scoring='accuracy')
 grid_search = grid_search.fit(X_train, y_train)
 
@@ -66,6 +66,35 @@ best_parameters = grid_search.best_params_
 print("We got a best accuracy of %s"%(best_accuracy))
 print("We got parameters of %s"%(best_parameters))
 
+#We got rbf kernel, gamma value of 0.5 and a C value of 1. Let us further check the optimal parameters
+print("We got rbf kernel, gamma value of 0.5 and a C value of 1. Let us further check the optimal parameters")
+parameters = [{'C': [1, 1.5, 2], 'kernel': ['rbf'], 'gamma': [0.5, 0.4, 0.3, 0.6, 0.7, 0.8, 0.9, 1]}]
+grid_search = GridSearchCV(estimator = classifier,
+							param_grid = parameters,
+							cv=2,
+							n_jobs =1,
+							scoring='accuracy')
+grid_search = grid_search.fit(X_train, y_train)
+
+best_accuracy = grid_search.best_score_
+best_parameters = grid_search.best_params_
+print("We got a best accuracy of %s in second run"%(best_accuracy))
+print("We got parameters of %s in second run"%(best_parameters))
+
+#We got a gamma value of 0.6. Let us further try to increase the accuracy by selection a better gamma value.
+print("We got a gamma value of 0.6. Let us further try to increase the accuracy by selection a better gamma value.")
+parameters = [{'C': [1, 1.5, 2], 'kernel': ['rbf'], 'gamma': [0.55, 0.56, 0.57, 0.58, 0.59, 0.6,0.61, 0.62]}]
+grid_search = GridSearchCV(estimator = classifier,
+							param_grid = parameters,
+							cv=2,
+							n_jobs =1,
+							scoring='accuracy')
+grid_search = grid_search.fit(X_train, y_train)
+
+best_accuracy = grid_search.best_score_
+best_parameters = grid_search.best_params_
+print("We got a best accuracy of %s in second run"%(best_accuracy))
+print("We got parameters of %s in second run"%(best_parameters))
 #We can use the best params and further select the best params by narrowing ndown the values to increase accuracy
 print("We can use the best params and further select the best params by narrowing ndown the values to increase accuracy")
 #Now let us predict the predictor variable values present in the test set
